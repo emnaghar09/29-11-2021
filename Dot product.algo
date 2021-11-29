@@ -1,0 +1,40 @@
+FUNCTION  multi_vectors(V1,V2: ARRAY_OF INTEGER ) : FLOAT
+VAR
+    i, j: INTEGER
+    P: FLOAT:=1;
+    PS: FLOAT:=0;
+BEGIN
+     FOR i FROM 0 TO V1.length STEP 1  DO
+     FOR j FROM 0 TO V2.length STEP 1  DO
+     IF (i=j) THEN
+        
+     P:= V1[i] * V2[j] ;
+     PS := PS + P;
+  
+    END_IF
+    END FOR
+    RETURN (PS)
+END
+ALGORITHM dot_product
+VAR
+    V1: ARRAY_OF INTEGER [3];
+    V2 : ARRAY_OF INTEGER [3];
+    X: FLOAT;
+    i, j: INTEGER;
+BEGIN
+     
+    FOR i FROM 0 TO V1.length-1 STEP 1  DO  
+    write ("GIVE VALUE FOR V1" i);
+    read (V1[i]);
+    write ("GIVE VALUE FOR V2" i);
+    read (V2[i]);
+    END FOR
+
+    X:= multi_vectors(V1,V2);
+    IF (X:=0) THEN
+       write ("the vectors are orthogonal");
+       ELSE
+        write ("the vectors are not orthogonal");
+    END_IF
+    
+END
